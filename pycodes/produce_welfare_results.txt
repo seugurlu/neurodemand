@@ -1,0 +1,52 @@
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])

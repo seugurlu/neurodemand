@@ -1,0 +1,150 @@
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+/home/serhat/anaconda3/envs/pyneurodemand/lib/python2.7/site-packages/scipy/integrate/odepack.py:218: ODEintWarning: Excess work done on this call (perhaps wrong Dfun type). Run with full_output = 1 to get quantitative information.
+  warnings.warn(warning_msg, ODEintWarning)
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+/home/serhat/anaconda3/envs/pyneurodemand/lib/python2.7/site-packages/scipy/integrate/odepack.py:218: ODEintWarning: Excess work done on this call (perhaps wrong Dfun type). Run with full_output = 1 to get quantitative information.
+  warnings.warn(warning_msg, ODEintWarning)
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:326: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+result_analysis.py:314: RuntimeWarning: invalid value encountered in log
+  log_exp = np.log(func_input[-1])
+/home/serhat/anaconda3/envs/pyneurodemand/lib/python2.7/site-packages/scipy/integrate/odepack.py:218: ODEintWarning: Excess work done on this call (perhaps wrong Dfun type). Run with full_output = 1 to get quantitative information.
+  warnings.warn(warning_msg, ODEintWarning)
+result_analysis.py:313: RuntimeWarning: invalid value encountered in log
+  log_p = np.log(func_input[:-1])
+/home/serhat/anaconda3/envs/pyneurodemand/lib/python2.7/site-packages/scipy/integrate/odepack.py:218: ODEintWarning: Excess work done on this call (perhaps wrong Dfun type). Run with full_output = 1 to get quantitative information.
+  warnings.warn(warning_msg, ODEintWarning)

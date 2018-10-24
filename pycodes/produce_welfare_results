@@ -1,0 +1,152 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sat Aug  5 22:21:55 2017
+This file is the output script for the paper.
+@author: seugurlu
+"""
+from rpy2.robjects import pandas2ri
+from scipy.integrate import odeint
+from joblib import Parallel, delayed
+pandas2ri.activate()
+import numpy as np
+import pandas as pd
+import os
+from sys import path
+try:
+    os.chdir("/home/seugurlu/Desktop/SVN/trunk/estimering")
+except: 
+    os.chdir("/home/serhat/SVN/trunk/estimering") #Server
+    
+path.append(os.getcwd()+'/scripts/pycodes')
+import neural_functions as nf
+import demand_predict as dp
+
+number_goods = 10
+number_bootstrap = 200
+number_cores = 35
+#Set R functions
+
+
+def welfare_graph(sample_key):
+    main_data = pd.HDFStore(r'data/processed/main_sample', 'r')['main_sample']
+    
+    log_price = np.log( main_data.filter(regex = r'^p.', axis = 1) )
+    log_expenditure = np.log( main_data['total.expenditure'] )
+    log_inputs = log_price.join(log_expenditure).astype(np.float32)
+    log_inputs = log_inputs.sample(n = 200, random_state = 100)
+            
+    def price(t):
+        return((price_1-price_0)*t + price_0)
+    
+    #Initialize Arrays
+    index = log_inputs.index
+    approach = ['AIDS', 'QUAIDS', 'CFNN']
+    multi_index = pd.MultiIndex.from_product([index,approach], names = ['index', 'approach'])
+    multi_index_column = pd.MultiIndex.from_product([np.arange(number_bootstrap)+1, np.arange(10)],
+                                                     names = ['sample_key', 'good'])
+    equiv_var = pd.DataFrame(index = multi_index, columns =multi_index_column)
+    
+    multi_index = pd.MultiIndex.from_product([index, approach[:-1]], names = ['index', 'apprach'])
+    util_var = pd.DataFrame(index = multi_index, columns = multi_index_column)
+    
+    #Import coefficients
+    aids_coef = np.array(np.load(r"./output/AIDS/aids"+str(sample_key)+".npy", encoding = 'bytes')[0])
+    quaids_coef = np.array(np.load(r"./output/QUAIDS/quaids"+str(sample_key)+".npy", encoding = 'bytes')[0])
+    with np.load(r'./output/NN/cfnn/pycoefficients_cfnn'+str(sample_key)+'.npz', 'r') as cfnn:
+            w_1 = cfnn['w_1']
+            w_2 = cfnn['w_2']
+            b_1 = cfnn['b_1']
+            b_2 = cfnn['b_2']
+            
+    for good in np.arange(number_goods):
+        #Define price event
+        price_change_good = good
+        change_percent = 1.10
+        for household_no in range(log_inputs.shape[0]) :
+            household_index = log_inputs.index[household_no]
+            household = np.array(log_inputs[household_no:household_no+1]).ravel()
+            price_0 = np.exp(household[:-1])
+            price_change = np.repeat(1.,number_goods)
+            price_change[price_change_good] = change_percent
+            price_1 = price_change * price_0
+            
+            def ev_util(coef, price_1, price_0, number_goods, model = 'AIDS'):
+                if model == 'AIDS':
+                    lna_new, b_new = dp.price_index(coef, np.log(price_1), number_goods, model = "AIDS")
+                    utility_new = (  household[-1] - lna_new ) / b_new
+                    lna_old, b_old = dp.price_index(aids_coef, np.log(price_0), number_goods, model = "AIDS")
+                    lexp = utility_new * b_old + lna_old
+                    ev_util = np.exp(household[-1]) - np.exp(lexp)
+                    
+                if model == 'QUAIDS':
+                    _,_,_,lambd = dp.unroll_coef(coef, number_goods, model = 'QUAIDS')
+                    lambda_new = (lambd*np.log(price_1)).sum()
+                    lna_new, b_new = dp.price_index(coef, np.log(price_1), number_goods, model = "QUAIDS")
+                    utility_new = ( ( (  household[-1] - lna_new ) / b_new ) ** (-1) + lambda_new ) ** (-1)
+                    lambda_old = (lambd*np.log(price_0)).sum()
+                    lna_old, b_old = dp.price_index(coef, np.log(price_0), number_goods, model = "QUAIDS")
+                    lexp = (utility_new**(-1) - lambda_old)**(-1) * b_old + lna_old
+                    ev_util = np.exp(household[-1]) - np.exp(lexp)
+                return(ev_util)
+                    
+            ev_aids_util = ev_util(aids_coef, price_1, price_0, number_goods, model = 'AIDS')
+            ev_quaids_util = ev_util(quaids_coef, price_1, price_0, number_goods, model = 'QUAIDS')
+            
+            def f_aids(y,t):
+                func_input = np.append( price(t), np.exp(household[-1]) - y ) 
+                log_p = np.log(func_input[:-1])
+                log_exp = np.log(func_input[-1])
+                pred = dp.demand_predict(aids_coef, log_p, log_exp, number_goods, model = 'AIDS')
+                q = pred * np.exp(log_exp) / np.exp(log_p)
+                if t==0 :
+                    delta_p = np.zeros([1,number_goods])
+                else:
+                    delta_p = price_1 - price_0
+                ev = - np.matmul(q, np.transpose(delta_p))
+                return(ev)
+                
+            def f_quaids(y,t):
+                func_input = np.append( price(t), np.exp(household[-1]) - y ) 
+                log_p = np.log(func_input[:-1])
+                log_exp = np.log(func_input[-1])
+                pred = dp.demand_predict(quaids_coef, log_p, log_exp, number_goods, model = 'QUAIDS')
+                q = pred * np.exp(log_exp) / np.exp(log_p)
+                if t==0 :
+                    delta_p = np.zeros([1,number_goods])
+                else:
+                    delta_p = price_1 - price_0
+                ev = - np.matmul(q, np.transpose(delta_p))
+                return(ev)
+    
+            def f_cfnn(y,t):
+                func_input = np.append( price(t), np.exp(household[-1]) - y ) 
+                pred_input = np.log(func_input)
+                pred,_ = nf.neural_predict(pred_input, w_1, w_2, b_1, b_2)
+                q = pred * func_input[-1] / func_input[:-1]
+                if t==0 :
+                    delta_p = np.zeros([1,number_goods])
+                else:
+                    delta_p = price_1 - price_0
+                ev = - np.matmul(q, np.transpose(delta_p))
+                return(ev)
+                
+            y0 = 0.
+            
+            t = np.linspace(1,0,20)
+            ev_aids = odeint(f_aids, y0, t, rtol = 1e-4, atol = 1e-4)[-1][0]
+            ev_quaids = odeint(f_quaids, y0, t, rtol = 1e-4, atol = 1e-4)[-1][0]
+            ev_cfnn = odeint(f_cfnn, y0, t, rtol = 1e-4, atol = 1e-4)[-1][0]
+                
+            equiv_var.loc[(household_index,'AIDS'),(sample_key,good)] = ev_aids
+            equiv_var.loc[(household_index,'QUAIDS'),(sample_key,good)] = ev_quaids
+            equiv_var.loc[(household_index,'CFNN'),(sample_key,good)] = ev_cfnn
+            util_var.loc[(household_index,'AIDS'),(sample_key,good)] = ev_aids_util
+            util_var.loc[(household_index,'QUAIDS'),(sample_key,good)] = ev_quaids_util
+            
+    equiv_var = equiv_var.dropna(axis = 1, how = 'all')        
+    util_var = util_var.dropna(axis = 1, how = 'all')        
+    equiv_var.to_hdf('./output/other/ev_sample'+str(sample_key), key = str(sample_key) )
+    util_var.to_hdf('./output/other/util_sample'+str(sample_key), key = str(sample_key) )
+        
+Parallel(n_jobs = number_cores)(delayed(welfare_graph)(sample_key+1) for sample_key in range(number_bootstrap))
