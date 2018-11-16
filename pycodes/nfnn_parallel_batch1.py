@@ -6,12 +6,12 @@ import numpy as np
 import pandas as pd
 import os
 
-try:
-    os.chdir("/home/seugurlu/Desktop/SVN/trunk/estimering")
-except: 
-    os.chdir("/home/serhat/SVN/trunk/estimering") #Server
+# try:
+#     os.chdir("/home/seugurlu/Desktop/SVN/trunk/estimering")
+# except:
+#     os.chdir("/home/serhat/SVN/trunk/estimering") #Server
     
-path.append('./scripts/pycodes')
+path.append('./pycodes')
 import neural_functions as nf
 
 number_goods = 10
@@ -23,6 +23,23 @@ number_cores = 35
 sample_range = range(200)
 batch_size = 200
 
+
+# Set Data Related Hyper-parameters
+n_bootstrap = 200  # Number of bootstrapped samples.
+p_ident = 'pt_'  # String identifier for price columns.
+e_ident = 'total_expenditure'  # String identifier for total expenditure column.
+b_ident = 'wt_'  # String identifier for budget share columns.
+d_ident = None  # String identifier for demographic variables columns. Set to 'd_' for estimation with demographics.
+data_path = "./output/sample_adjustments/edited_data.csv"  # Path to the training data.
+data_index_column_name_identifier = 'index'  # Column name that holds data point indices in input files.
+idx_bootstrap_data_path = "./output/sample_adjustments/idx_bootstrap.npy"  # Path to bootstrap indices.
+
+# Import Data
+full_data = pd.read_csv(data_path, index_col=data_index_column_name_identifier)
+idx_bootstrap = np.load(idx_bootstrap_data_path).item()
+#Select sample
+sample_key = 0
+
 #%%
 def nfnn(sample_key):
     session_conf = tf.ConfigProto(
@@ -31,17 +48,27 @@ def nfnn(sample_key):
     sess = tf.InteractiveSession(config = session_conf)
     
     """Input Data"""
-    file_handle = "./data/processed/bootstrap_sample"+str( sample_key )
-    raw_data = pd.HDFStore(file_handle)
-    x_train = raw_data['x_train']; y_train = raw_data['y_train']
-    x_cv = raw_data['x_cv']; y_cv = raw_data['y_cv']
-    x_test = raw_data['x_test']; y_test = raw_data['y_test']
+    # file_handle = "./data/processed/bootstrap_sample"+str( sample_key )
+    # raw_data = pd.HDFStore(file_handle)
+    # x_train = raw_data['x_train']; y_train = raw_data['y_train']
+    # x_cv = raw_data['x_cv']; y_cv = raw_data['y_cv']
+    # x_test = raw_data['x_test']; y_test = raw_data['y_test']
 
     """Edit Input Output Data"""
-    x_train = np.log( x_train )#Generate input matrix as homogeneity adjusted log
-    x_cv = np.log( x_cv )#Generate input matrix as homogeneity adjusted log
-    x_test = np.log( x_test )#Generate input matrix as homogeneity adjusted log
-    
+    # x_train = np.log( x_train )#Generate input matrix as homogeneity adjusted log
+    # x_cv = np.log( x_cv )#Generate input matrix as homogeneity adjusted log
+    # x_test = np.log( x_test )#Generate input matrix as homogeneity adjusted log
+    idx_training = idx_bootstrap[sample_key]['training_sample']
+    idx_cv = idx_bootstrap[sample_key]['cv_sample']
+    idx_test = idx_bootstrap[sample_key]['test_sample']
+
+    x_train = full_data.iloc[idx_training, :number_goods+1]
+    x_cv = full_data.iloc[idx_cv, :number_goods+1]
+    x_test = full_data.iloc[idx_test, :number_goods+1]
+    y_train = full_data.iloc[idx_training, number_goods+4:]
+    y_cv = full_data.iloc[idx_cv, number_goods + 4:]
+    y_test = full_data.iloc[idx_test, number_goods + 4:]
+
     x_size = number_goods + 1 #Size of the input layer: + expenditure (1)
     y_size = number_goods #Size of the output layer
     
@@ -87,19 +114,19 @@ def nfnn(sample_key):
         
         '''Updates start here'''
         #Stochastic Adam
-        #print("Stochastic gradient starts with hhsize: %s" %(hh_size))
+        print("Stochastic gradient starts with hhsize: %s" %(hh_size))
         for epoch in range(stochastic_grad_epoch_limit):
             train_accuracy_pre_optimization = train_accuracy_post_optimization
             #Start with stochastic to converge around minimum faster
             for i in range( len(x_train) ):
                 train_step.run({ x:x_train[i:i+1], y:y_train[i:i+1], length: 1 })
             train_accuracy_post_optimization = train_cost.eval( {x: x_train, y: y_train, length : len(x_train)} )
-            #print('Stochastic gradient continues at hhsize: %s, epoch %s. Post_cost: %.8f' %(hh_size, epoch, train_accuracy_post_optimization ) )
+            print('Stochastic gradient continues at hhsize: %s, epoch %s. Post_cost: %.8f' %(hh_size, epoch, train_accuracy_post_optimization ) )
             if tf.abs( train_accuracy_pre_optimization - train_accuracy_post_optimization ).eval() <= tol_stochastic :
-                #print("Stochastic gradient converged")
+                print("Stochastic gradient converged")
                 break
         
-        #print("Minibatch gradient starts with hhsize: %s" %(hh_size))
+        print("Minibatch gradient starts with hhsize: %s" %(hh_size))
         for epoch in range(mini_batch_grad_epoch_limit):
             train_accuracy_pre_optimization = train_accuracy_post_optimization
             #Continue with mini batch
@@ -113,9 +140,9 @@ def nfnn(sample_key):
                 batch_y = y_train[len(y_train)-remaining_observations:len(y_train)]
                 train_step.run( {x:batch_x, y:batch_y, length:remaining_observations} )
             train_accuracy_post_optimization = train_cost.eval( {x: x_train, y: y_train, length : len(x_train)} )
-            #print('Minibatch gradient continues at hhsize: %s, epoch %s. Post_cost: %.8f' %(hh_size, epoch, train_accuracy_post_optimization ) )
+            print('Minibatch gradient continues at hhsize: %s, epoch %s. Post_cost: %.8f' %(hh_size, epoch, train_accuracy_post_optimization ) )
             if tf.abs( train_accuracy_pre_optimization - train_accuracy_post_optimization ).eval() <= tol_iter :
-                #print("Stochastic gradient converged")
+                print("Stochastic gradient converged")
                 break          
        
         train_accuracy = accuracy_cost.eval( {x: x_train, y: y_train, length: len(x_train)} )
@@ -126,9 +153,9 @@ def nfnn(sample_key):
         cv_results.loc[idx, 'cv_acc'] = cv_accuracy
         test_results.loc[idx, 'test_acc'] = test_accuracy
 
-        save_name = "./output/Temp/nfnn/coefficients_nfnn_"+str(sample_key)+"_"+str(hh_size)
-        np.savez(save_name, w_1 = w_1.eval(), w_2 = w_2.eval(), b_1 = b_1.eval(), b_2 = b_2.eval(), hh_size = hh_size,
-                 train_accuracy = train_accuracy, cv_accuracy = cv_accuracy, test_accuracy = test_accuracy )
+        #save_name = "./output/Temp/nfnn/coefficients_nfnn_"+str(sample_key)+"_"+str(hh_size)
+        #np.savez(save_name, w_1 = w_1.eval(), w_2 = w_2.eval(), b_1 = b_1.eval(), b_2 = b_2.eval(), hh_size = hh_size,
+                #train_accuracy = train_accuracy, cv_accuracy = cv_accuracy, test_accuracy = test_accuracy )
         
         #Stop for while
         if hh_size == hh_end:

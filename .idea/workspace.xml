@@ -5,10 +5,44 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a5940e8-f865-4f90-86b3-62877d9eb601" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/network_functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/nn_functions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/useful_functions.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542119146.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542119314.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542123529.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542123560.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542124151.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542124594.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542124662.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542125617.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542125714.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542125880.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542125912.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542125951.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126000.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126125.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126165.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126184.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126502.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126542.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126567.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126639.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542126651.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216075.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216093.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216094.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216225.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216240.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216263.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216265.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216578.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216603.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/temp/logs/events.out.tfevents.1542216605.ARDIUS.v2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pycodes/nfnn_parallel_batch1.py" beforeDir="false" afterPath="$PROJECT_DIR$/pycodes/nfnn_parallel_batch1.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/(old)estimation_dn_pytorch.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/estimation_dn.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/estimation_dn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/network_functions.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,39 +54,39 @@
     <session id="1128773934">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
+          <entry key="project.closed" value="18" />
           <entry key="project.open.time.0" value="1" />
-          <entry key="project.open.time.4" value="2" />
-          <entry key="project.open.time.5" value="5" />
-          <entry key="project.open.time.6" value="4" />
+          <entry key="project.open.time.4" value="4" />
+          <entry key="project.open.time.5" value="7" />
+          <entry key="project.open.time.6" value="5" />
           <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="13" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="cfnnnegativity" value="1" />
+          <entry key="cfnnnegativity" value="3" />
           <entry key="csv" value="1" />
-          <entry key="py" value="10" />
+          <entry key="py" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="10" />
-          <entry key="Scratch" value="1" />
+          <entry key="Python" value="23" />
+          <entry key="Scratch" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="1991" />
-          <entry key="py" value="10727" />
+          <entry key="Python Console" value="5017" />
+          <entry key="py" value="28687" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="12569" />
-          <entry key="Scratch" value="149" />
+          <entry key="Python" value="33477" />
+          <entry key="Scratch" value="227" />
         </counts>
       </usages-collector>
     </session>
@@ -60,10 +94,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/network_functions.py">
+        <entry file="file://$PROJECT_DIR$/scripts/nn_functions.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="9" column="96" selection-start-line="9" selection-start-column="96" selection-end-line="9" selection-end-column="96" />
+            <state relative-caret-position="459">
+              <caret line="187" selection-start-line="187" selection-end-line="187" />
+              <folding>
+                <element signature="e#242#3931#0" />
+                <element signature="e#206#2918#1" />
+                <element signature="e#2757#2863#0" />
+                <element signature="e#3586#3780#0" />
+                <element signature="e#3957#4472#0" />
+                <element signature="e#3057#3205#1" />
+                <element signature="e#4420#4808#0" />
+                <element signature="e#3856#4228#1" />
+                <element signature="e#4237#4491#0" />
+                <element signature="e#4232#4312#1" />
+                <element signature="e#4293#4464#0" />
+                <element signature="e#5277#6466#0" />
+                <element signature="e#4252#4642#1" />
+                <element signature="e#4821#4947#0" />
+                <element signature="e#6240#6423#0" />
+                <element signature="e#7837#8000#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -71,17 +123,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/estimation_dn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="109" column="1" lean-forward="true" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pycodes/neural_functions_with_neg.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" selection-start-line="8" selection-end-line="8" selection-end-column="23" />
+            <state relative-caret-position="-821">
+              <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+              <folding>
+                <element signature="e#108#127#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -89,8 +135,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pycodes/cfnnnegativity">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+            <state relative-caret-position="255">
+              <caret line="38" column="36" selection-start-line="36" selection-start-column="4" selection-end-line="38" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -107,7 +153,17 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>keras</find>
+      <find>train_step</find>
+      <find>pd_to_</find>
+      <find>tf.float32</find>
+      <find>pd_to_tfdata</find>
+      <find>n_cores</find>
+      <find>values</find>
+      <find>idx_tra</find>
     </findStrings>
+    <replaceStrings>
+      <replace>np.float32</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -116,13 +172,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+        <option value="$PROJECT_DIR$/pycodes/nfnn_parallel_batch1.py" />
         <option value="$PROJECT_DIR$/scripts/network_functions.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_3.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_4.py" />
+        <option value="$PROJECT_DIR$/scripts/useful_functions.py" />
+        <option value="$PROJECT_DIR$/scripts/nn_functions.py" />
         <option value="$PROJECT_DIR$/scripts/estimation_dn.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="954" />
+    <option name="x" value="268" />
     <option name="width" value="973" />
     <option name="height" value="1047" />
   </component>
@@ -131,7 +193,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -150,10 +211,21 @@
               <item name="output" type="462c0819:PsiDirectoryNode" />
               <item name="temp" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="neurodemand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neurodemand" type="462c0819:PsiDirectoryNode" />
+              <item name="pycodes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neurodemand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neurodemand" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -203,8 +275,8 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="10" visible="true" weight="0.3264642" />
-      <window_info anchor="bottom" id="Inspection Results" order="11" weight="0.329718" />
+      <window_info anchor="bottom" id="Inspection Results" order="10" weight="0.329718" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="11" visible="true" weight="0.3264642" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -221,17 +293,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/(old)estimation_dn_pytorch.py">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="15" column="35" lean-forward="true" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/network_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="9" column="96" selection-start-line="9" selection-start-column="96" selection-end-line="9" selection-end-column="96" />
+        <state relative-caret-position="68">
+          <caret line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -242,34 +307,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pycodes/cfnnnegativity">
+    <entry file="file://$PROJECT_DIR$/pycodes/neural_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="33" column="21" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="21" />
+        <state relative-caret-position="17">
+          <caret line="16" column="11" selection-end-line="109" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py">
+    <entry file="file://$PROJECT_DIR$/pycodes/nfnn_parallel_batch1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-end-line="4" />
+        <state relative-caret-position="442">
+          <caret line="108" column="54" lean-forward="true" selection-start-line="108" selection-start-column="24" selection-end-line="108" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/network_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/(old)estimation_dn_pytorch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="63" selection-start-line="63" selection-end-line="66" selection-end-column="60" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/helper_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" selection-start-line="10" selection-end-line="33" selection-end-column="15" />
+        <state relative-caret-position="6409">
+          <caret line="381" column="58" selection-start-line="380" selection-start-column="8" selection-end-line="381" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="34" column="74" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="74" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="80" column="16" selection-start-line="78" selection-start-column="4" selection-end-line="80" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/old_scripts/estimation_dn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="38" column="17" selection-start-line="38" selection-start-column="17" selection-end-line="38" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="58" column="18" selection-start-line="41" selection-end-line="58" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/old_scripts/network_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="115" column="18" selection-start-line="47" selection-end-line="115" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/useful_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="15" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/nn_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="187" selection-start-line="187" selection-end-line="187" />
+          <folding>
+            <element signature="e#242#3931#0" />
+            <element signature="e#206#2918#1" />
+            <element signature="e#2757#2863#0" />
+            <element signature="e#3586#3780#0" />
+            <element signature="e#3957#4472#0" />
+            <element signature="e#3057#3205#1" />
+            <element signature="e#4420#4808#0" />
+            <element signature="e#3856#4228#1" />
+            <element signature="e#4237#4491#0" />
+            <element signature="e#4232#4312#1" />
+            <element signature="e#4293#4464#0" />
+            <element signature="e#5277#6466#0" />
+            <element signature="e#4252#4642#1" />
+            <element signature="e#4821#4947#0" />
+            <element signature="e#6240#6423#0" />
+            <element signature="e#7837#8000#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pycodes/cfnnnegativity">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="38" column="36" selection-start-line="36" selection-start-column="4" selection-end-line="38" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/estimation_dn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="109" column="1" lean-forward="true" selection-start-line="109" selection-start-column="1" selection-end-line="109" selection-end-column="1" />
+        <state relative-caret-position="-821">
+          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+          <folding>
+            <element signature="e#108#127#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
