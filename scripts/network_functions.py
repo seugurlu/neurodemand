@@ -37,25 +37,23 @@ def build_model(number_node, number_good, optimizer, loss_fn, number_demographic
 
     number_hidden_layer = number_node.__len__()
 
-    num_inputs = number_good + number_demographic + 1
-    model = keras.Sequential()  # Initialize model.
-    model.add(keras.layers.Flatten(input_shape=(1,))) # Flatten input
-    hidden_layer = 0  # Initialize iterator for which hidden layer to add to the model.
+    number_of_inputs = number_good + number_demographic + 1
+    inputs = keras.Input(shape=[number_of_inputs])
+    x = keras.layers.Dense(number_node[0], activation=activation_fn)(inputs)
+    hidden_layer = 1
     while hidden_layer < number_hidden_layer:  # Construct hidden layers.
-        model.add(keras.layers.Dense(number_node[hidden_layer], activation=activation_fn))  # Add the hidden layer.
+        x = keras.layers.Dense(number_node[hidden_layer], activation=activation_fn)(x)  # Add the hidden layer.
         hidden_layer += 1  # Move to the next layer.
-    model.add(keras.layers.Dense(number_good, activation='softmax'))  # Construct the output softmax layer.
-
+    predictions = keras.layers.Dense(number_good, activation='softmax')(x)  # Construct the output softmax layer.
+    model = keras.Model(inputs=inputs, outputs=predictions)
     model.compile(loss=loss_fn, optimizer=optimizer, metrics=metrics)
 
     return model
 
 
-def pd_to_tfdata(data, p_ident, e_ident, b_ident, d_ident=None, idx=None):
+def prepare_data(data, p_ident, e_ident, b_ident, d_ident=None, idx=None):
     """
-    Converts a pandas dataframe to a tf.data.Dataset object. Only use this for small datasets. For large datasets,
-    for example datasets that are >1GB, you may use the dataset in terms of placeholders. See
-    https://www.tensorflow.org/guide/datasets -> Reading Input Data -> Consuming Numpy Arrays
+    Converts a pandas dataframe to a numpy object to feed into Keras model.
     :param data: A pandas dataframe.
     :param p_ident: String identifier for price columns. Starting unique pattern of the column names for prices.
     :param e_ident: String identifier for expenditure columns. Starting unique pattern of the column name for
@@ -67,10 +65,11 @@ def pd_to_tfdata(data, p_ident, e_ident, b_ident, d_ident=None, idx=None):
     names for the other covariates.
     :param idx: Optional list of indices. Default: None. If a sample from the provided data is selected for conversion,
     this is an array of indices to select observations using pandas.DataFrame row indices.
-    :return: A tf.data.Dataset object with features and outputs.
+    :return: x, y
+    x: A numpy array of inputs.
+    y: A numpy array of outputs.
 
     Example:
-    tf.enable_eager_execution()  # To print output for this example
     d = {'p_good1': [1, 2], 'p_good2': [3, 4], 'exp': [5, 6], 'w_good1': [0.3, 0.7], 'w_good2':[0.7, 0.3]}
     data = pd.DataFrame(d)
     data
@@ -79,23 +78,13 @@ def pd_to_tfdata(data, p_ident, e_ident, b_ident, d_ident=None, idx=None):
     1        2        4    6      0.7      0.3
 
     # Without indices to select from
-    tf_data = pd_to_tfdata(data, 'p', 'e', 'w')
-    print(tf_data)
-    <TensorSliceDataset shapes: ((3,), (2,)), types: (tf.int64, tf.float64)>
-    tf_data.make_one_shot_iterator()
-    for x, y in tf_data:
-        print(x, y)
-    tf.Tensor([1 3 5], shape=(3,), dtype=int64) tf.Tensor([0.3 0.7], shape=(2,), dtype=float64)
-    tf.Tensor([2 4 6], shape=(3,), dtype=int64) tf.Tensor([0.7 0.3], shape=(2,), dtype=float64)
-
-    # Selecting only the first row
-    tf_data = pd_to_tfdata(data, 'p', 'e', 'w', idx=[0])
-    print(tf_data)
-    <TensorSliceDataset shapes: ((3,), (2,)), types: (tf.int64, tf.float64)>
-    tf_data.make_one_shot_iterator()
-    for x, y in tf_data:
-        print(x, y)
-    tf.Tensor([1 3 5], shape=(3,), dtype=int64) tf.Tensor([0.3 0.7], shape=(2,), dtype=float64)
+    x, y = prepare_data(data, 'p', 'e', 'w')
+    print(x)
+    [[1. 3. 5.]
+    [2. 4. 6.]]
+    print(y)
+    [[1. 3. 5.]
+    [2. 4. 6.]]
     """
 
     # Extract data to work with using the provided indices.
@@ -116,10 +105,7 @@ def pd_to_tfdata(data, p_ident, e_ident, b_ident, d_ident=None, idx=None):
         features = np.hstack([price.values, expenditure.values, demographics.values])
     outputs = budget_share.values.astype(np.float32)
 
-    # Create a tf.data.Dataset object
-    dataset = tf.data.Dataset.from_tensor_slices((features, outputs))
-
-    return dataset
+    return features, outputs
 
 
 def generate_hidden_search_set(midpoint, distance=5):

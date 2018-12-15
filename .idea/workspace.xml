@@ -4,7 +4,11 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4a5940e8-f865-4f90-86b3-62877d9eb601" name="Default Changelist" comment="" />
+    <list default="true" id="4a5940e8-f865-4f90-86b3-62877d9eb601" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/estimation_dn.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/estimation_dn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/network_functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/network_functions.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,12 +22,13 @@
           <entry key="project.closed" value="23" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.4" value="4" />
           <entry key="project.open.time.5" value="7" />
           <entry key="project.open.time.6" value="6" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -36,7 +41,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="42" />
+          <entry key="Python" value="43" />
           <entry key="Scratch" value="5" />
         </counts>
       </usages-collector>
@@ -48,7 +53,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="36107" />
+          <entry key="Python" value="37662" />
           <entry key="Scratch" value="227" />
         </counts>
       </usages-collector>
@@ -59,19 +64,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/estimation_dn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="83" column="52" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/network_functions.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+            <state relative-caret-position="425">
+              <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
               <folding>
-                <element signature="e#47#75#0" expanded="true" />
+                <element signature="e#108#119#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -122,7 +118,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="268" />
     <option name="width" value="973" />
     <option name="height" value="1047" />
@@ -132,7 +128,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -172,6 +167,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -212,6 +208,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1227608" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -298,26 +295,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/estimation_aids.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old_scripts/network_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#47#75#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/old_scripts/estimation_dn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/old_scripts/network_functions.py" />
+    <entry file="file://$PROJECT_DIR$/old_scripts/estimation_dn.py" />
     <entry file="file://$PROJECT_DIR$/scripts/estimation_sdn.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -329,28 +308,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="539">
           <caret line="184" column="20" selection-start-line="184" selection-start-column="20" selection-end-line="184" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/neural_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/old_scripts/estimation_dn_tf_estimator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" selection-start-line="4" selection-end-line="4" />
-          <folding>
-            <element signature="e#108#127#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -358,9 +325,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" selection-start-line="1" selection-end-line="1" />
-          <folding>
-            <element signature="e#45#68#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -372,38 +336,52 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/helper_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/old_scripts/(old)estimation_dn_pytorch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/estimation_aids.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="88" lean-forward="true" selection-start-line="52" selection-end-line="53" selection-end-column="88" />
           <folding>
-            <element signature="e#109#145#0" expanded="true" />
+            <element signature="e#115#151#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/network_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="41" column="49" selection-start-line="41" selection-start-column="49" selection-end-line="41" selection-end-column="49" />
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" selection-end-column="28" />
           <folding>
             <element signature="e#47#75#0" expanded="true" />
+            <element signature="e#262#2021#1" />
+            <element signature="e#2881#3039#0" />
+            <element signature="e#6648#10121#0" />
+            <element signature="e#6645#9108#1" />
+            <element signature="e#9273#9379#0" />
+            <element signature="e#9853#10035#0" />
+            <element signature="e#6619#7972#0" />
+            <element signature="e#6619#7507#1" />
+            <element signature="e#7736#7884#0" />
+            <element signature="e#7750#7883#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/estimation_dn.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="83" column="52" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
+        <state relative-caret-position="425">
+          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+          <folding>
+            <element signature="e#108#119#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

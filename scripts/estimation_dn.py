@@ -2,6 +2,7 @@
     Returns a dictionary of predicted neural network models. Keys are sample keys.
 """
 # Import Modules
+import time
 import sys
 sys.path.append('./scripts')
 import network_functions as nf
@@ -12,7 +13,6 @@ from tensorflow import keras
 
 # Set system related hyper-parameters
 n_cores_to_tf = 7
-
 # Set tensorflow related options
 config = tf.ConfigProto(
     intra_op_parallelism_threads=n_cores_to_tf,
@@ -21,6 +21,7 @@ keras.backend.set_session(tf.Session(config=config))
 
 
 # Set Data Related Hyper-parameters
+starting_sample = 0
 n_bootstrap = 200  # Number of bootstrapped samples.
 p_ident = 'pt_'  # String identifier for price columns.
 e_ident = 'total_expenditure'  # String identifier for total expenditure column.
@@ -60,36 +61,36 @@ n_hidden_node_search_midpoint = int(np.sqrt(
 n_hidden_node_search_set = nf.generate_hidden_search_set(n_hidden_node_search_midpoint, n_hidden_node_search_distance)
 
 # Cross-validation
-sample_key = 0
-n_hidden_node = 5
+
 
 def cross_validation(sample_key):
+    start_time = time.time()
     # Pick training and cross-validation data for this particular bootstrap
     print("Cross Validation starts with bootstrap sample {}".format(sample_key))
     idx_training = idx_bootstrap[sample_key]['training_sample']
     idx_cv = idx_bootstrap[sample_key]['cv_sample']
-    cv = nf.pd_to_tfdata(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_cv)
-    train = nf.pd_to_tfdata(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_training)
-    train = train.cache().repeat().batch(mini_batch_training_batch_size).prefetch(mini_batch_training_batch_size * 5)
+    x_train, y_train = nf.prepare_data(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_training)
+    x_cv, y_cv = nf.prepare_data(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_cv)
+
     # Estimation
-    def estimation(n_hidden_node):
-        file_path = "./output/temp/dn/cross_validation/sample_{}_node_{}.h5".format(sample_key, n_hidden_node)
-        dn_model = nf.build_model(n_hidden_node, n_goods, optimizer, loss_fn, activation_fn=activation_function)
-        # Large batch training for reduced variance around target area
-        steps_per_epoch = int(idx_training.shape[0]/mini_batch_training_batch_size)
+    def estimation(n_node):
+        file_path = "./output/temp/dn/cross_validation/sample_{}_node_{}.h5".format(sample_key, n_node)
+        dn_model = nf.build_model(n_node, n_goods, optimizer, loss_fn, activation_fn=activation_function)
         callbacks = [keras.callbacks.EarlyStopping('loss', min_delta=mini_batch_tol)]
-        history = dn_model.fit(train, epochs=mini_batch_training_epoch_limit, callbacks=callbacks, verbose=0,
-                               steps_per_epoch=steps_per_epoch, validation_data=cv,
-                               validation_steps=steps_per_epoch)
-        # TODO: Fix input shape in network_functions
+        history = dn_model.fit(x=x_train, y=y_train, batch_size=mini_batch_training_batch_size,
+                               epochs=mini_batch_training_epoch_limit, callbacks=callbacks, verbose=0,
+                               validation_data=(x_cv, y_cv))
         dn_model.save(file_path)
         return history.history
     cv_results = {'Number of Nodes': [], 'Loss History': []}
-    for n_hidden_node in n_hidden_node_search_set:
-        cv_results['Number of Nodes'].append(n_hidden_node)
-        cv_results['Loss History'].append(estimation(n_hidden_node))
+    for node in n_hidden_node_search_set:
+        cv_results['Number of Nodes'].append(node)
+        cv_results['Loss History'].append(estimation(node))
+    end_time = time.time()
+    elapsed = (end_time - start_time)/60
+    print("Predicted time remaining: {} minutes".format((n_bootstrap-sample_key-1)*elapsed))
     return cv_results
 
 dn_models = {}
-for i in range(n_bootstrap):
+for i in range(starting_sample, n_bootstrap):
     dn_models[i] = cross_validation(i)
