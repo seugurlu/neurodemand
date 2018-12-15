@@ -2,22 +2,24 @@
     Returns a dictionary of predicted neural network models. Keys are sample keys.
 """
 # Import Modules
-import time
 import sys
+from joblib import Parallel, delayed
 sys.path.append('./scripts')
 import network_functions as nf
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-from tensorflow import keras
+tf.enable_eager_execution()
+#from tensorflow import keras
 
 # Set system related hyper-parameters
-n_cores_to_tf = 7
+n_cores_to_tf = 1
+n_cores_to_joblib = 3
 # Set tensorflow related options
 config = tf.ConfigProto(
     intra_op_parallelism_threads=n_cores_to_tf,
     inter_op_parallelism_threads=n_cores_to_tf)
-keras.backend.set_session(tf.Session(config=config))
+#keras.backend.set_session(tf.Session(config=config))
 
 
 # Set Data Related Hyper-parameters
@@ -40,7 +42,6 @@ mini_batch_training_batch_size = 128
 mini_batch_training_epoch_limit = 50
 mini_batch_tol = 1e-8
 n_hidden_node_search_distance = 5
-optimizer = keras.optimizers.Adam(lr=learning_rate, epsilon=epsilon)
 
 # Import Data
 full_data = pd.read_csv(data_path, index_col=data_index_column_name_identifier)
@@ -64,6 +65,9 @@ n_hidden_node_search_set = nf.generate_hidden_search_set(n_hidden_node_search_mi
 
 
 def cross_validation(sample_key):
+    from tensorflow import keras
+    keras.backend.set_session(tf.Session(config=config))
+    optimizer = keras.optimizers.Adam(lr=learning_rate, epsilon=epsilon)
     # Pick training and cross-validation data for this particular bootstrap
     print("Cross Validation starts with bootstrap sample {}".format(sample_key))
     idx_training = idx_bootstrap[sample_key]['training_sample']
@@ -85,7 +89,9 @@ def cross_validation(sample_key):
     for node in n_hidden_node_search_set:
         cv_results['Number of Nodes'].append(node)
         cv_results['Loss History'].append(estimation(node))
+    keras.backend.clear_session()
+    return cv_results
 
+output = Parallel(n_jobs=3, verbose=10)(delayed(cross_validation)(sample_key)
+                                                   for sample_key in range(n_bootstrap))
 
-for i in range(starting_sample, n_bootstrap):
-    cross_validation(i)
