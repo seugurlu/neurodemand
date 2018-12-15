@@ -21,7 +21,7 @@ keras.backend.set_session(tf.Session(config=config))
 
 
 # Set Data Related Hyper-parameters
-starting_sample = 0
+starting_sample = 36
 n_bootstrap = 200  # Number of bootstrapped samples.
 p_ident = 'pt_'  # String identifier for price columns.
 e_ident = 'total_expenditure'  # String identifier for total expenditure column.
@@ -64,7 +64,6 @@ n_hidden_node_search_set = nf.generate_hidden_search_set(n_hidden_node_search_mi
 
 
 def cross_validation(sample_key):
-    start_time = time.time()
     # Pick training and cross-validation data for this particular bootstrap
     print("Cross Validation starts with bootstrap sample {}".format(sample_key))
     idx_training = idx_bootstrap[sample_key]['training_sample']
@@ -86,11 +85,7 @@ def cross_validation(sample_key):
     for node in n_hidden_node_search_set:
         cv_results['Number of Nodes'].append(node)
         cv_results['Loss History'].append(estimation(node))
-    end_time = time.time()
-    elapsed = (end_time - start_time)/60
-    print("Predicted time remaining: {} minutes".format((n_bootstrap-sample_key-1)*elapsed))
-    return cv_results
 
-dn_models = {}
+
 for i in range(starting_sample, n_bootstrap):
-    dn_models[i] = cross_validation(i)
+    cross_validation(i)
