@@ -9,8 +9,9 @@ import network_functions as nf
 import pandas as pd
 import numpy as np
 import tensorflow as tf
-tf.enable_eager_execution()
-#from tensorflow import keras
+#tf.enable_eager_execution()
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"]="2"
 
 # Set system related hyper-parameters
 n_cores_to_tf = 1
@@ -19,11 +20,10 @@ n_cores_to_joblib = 3
 config = tf.ConfigProto(
     intra_op_parallelism_threads=n_cores_to_tf,
     inter_op_parallelism_threads=n_cores_to_tf)
-#keras.backend.set_session(tf.Session(config=config))
 
 
 # Set Data Related Hyper-parameters
-starting_sample = 36
+starting_sample = 0
 n_bootstrap = 200  # Number of bootstrapped samples.
 p_ident = 'pt_'  # String identifier for price columns.
 e_ident = 'total_expenditure'  # String identifier for total expenditure column.
@@ -69,7 +69,7 @@ def cross_validation(sample_key):
     keras.backend.set_session(tf.Session(config=config))
     optimizer = keras.optimizers.Adam(lr=learning_rate, epsilon=epsilon)
     # Pick training and cross-validation data for this particular bootstrap
-    print("Cross Validation starts with bootstrap sample {}".format(sample_key))
+    #print("Cross Validation starts with bootstrap sample {}".format(sample_key))
     idx_training = idx_bootstrap[sample_key]['training_sample']
     idx_cv = idx_bootstrap[sample_key]['cv_sample']
     x_train, y_train = nf.prepare_data(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_training)
@@ -92,6 +92,6 @@ def cross_validation(sample_key):
     keras.backend.clear_session()
     return cv_results
 
+
 output = Parallel(n_jobs=3, verbose=10)(delayed(cross_validation)(sample_key)
                                                    for sample_key in range(n_bootstrap))
-
