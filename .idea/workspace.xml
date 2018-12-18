@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a5940e8-f865-4f90-86b3-62877d9eb601" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/scripts/estimation_dn.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/estimation_dn.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/result/analyse_dn_cv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/result/copy_preferred_models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/result/dn_cross_validation_costs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/result/result_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/estimation/dnn_estimates.npy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/create_samples.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/estimation_aids.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/estimation_dn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/estimation_quaids.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/helper_functions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/network_functions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/result_analysis.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/useful_functions.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,16 +30,16 @@
     <session id="1128773934">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="24" />
+          <entry key="project.closed" value="29" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.4" value="4" />
-          <entry key="project.open.time.5" value="7" />
-          <entry key="project.open.time.6" value="6" />
+          <entry key="project.open.time.4" value="8" />
+          <entry key="project.open.time.5" value="8" />
+          <entry key="project.open.time.6" value="7" />
           <entry key="project.open.time.7" value="3" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="24" />
+          <entry key="project.opened" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -38,8 +51,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="Python" value="43" />
+          <entry key="CSV" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
+          <entry key="Python" value="59" />
           <entry key="Scratch" value="5" />
         </counts>
       </usages-collector>
@@ -51,7 +65,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="37667" />
+          <entry key="CSV" value="1" />
+          <entry key="Python" value="43740" />
           <entry key="Scratch" value="227" />
         </counts>
       </usages-collector>
@@ -88,13 +103,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/scripts/estimation_dn.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/result/analyse_dn_cv.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="96" column="88" selection-start-line="96" selection-start-column="88" selection-end-line="96" selection-end-column="88" />
+            <state relative-caret-position="375">
+              <caret line="26" column="26" selection-end-line="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/result/copy_preferred_models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="21" selection-end-line="21" />
               <folding>
-                <element signature="e#108#118#0" expanded="true" />
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/result/result_analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="500">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
+              <folding>
+                <element signature="e#0#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/result/dn_cross_validation_costs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="47" column="43" selection-end-line="47" selection-end-column="43" />
+              <folding>
+                <element signature="e#126#159#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,9 +167,11 @@
       <find>values</find>
       <find>idx_tra</find>
       <find>keras</find>
+      <find>budget_share_column_name_identifier</find>
     </findStrings>
     <replaceStrings>
       <replace>np.float32</replace>
+      <replace>b_ident</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -142,6 +192,14 @@
         <option value="$PROJECT_DIR$/old_scripts/estimation_dn.py" />
         <option value="$PROJECT_DIR$/scripts/network_functions.py" />
         <option value="$PROJECT_DIR$/scripts/estimation_dn.py" />
+        <option value="$PROJECT_DIR$/scripts/analyze_dn_cross_validation.py" />
+        <option value="$PROJECT_DIR$/scripts/result/dn_cross_validation_costs.py" />
+        <option value="$PROJECT_DIR$/scripts/result/analyse_dn_cv.py" />
+        <option value="$PROJECT_DIR$/output/analysis/preferred_nodes.csv" />
+        <option value="$PROJECT_DIR$/scripts/result/copy_preferred_models.py" />
+        <option value="$PROJECT_DIR$/scripts/estimation/network_functions.py" />
+        <option value="$PROJECT_DIR$/scripts/estimation/estimation_dn.py" />
+        <option value="$PROJECT_DIR$/scripts/result/result_analysis.py" />
       </list>
     </option>
   </component>
@@ -156,6 +214,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -171,20 +230,43 @@
             <path>
               <item name="neurodemand" type="b2602c69:ProjectViewProjectNode" />
               <item name="neurodemand" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neurodemand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neurodemand" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+              <item name="estimation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neurodemand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neurodemand" type="462c0819:PsiDirectoryNode" />
+              <item name="output" type="462c0819:PsiDirectoryNode" />
+              <item name="figures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neurodemand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neurodemand" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="neurodemand" type="b2602c69:ProjectViewProjectNode" />
+              <item name="neurodemand" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="result" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="Csv.Editor.Settings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -217,14 +299,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12786885" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49919486" visible="true" weight="0.12750264" />
+      <window_info id="Structure" order="1" sideWeight="0.50080514" side_tool="true" weight="0.12750264" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -232,9 +314,9 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5010638" side_tool="true" weight="0.3293348" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5015806" side_tool="true" weight="0.3264642" />
       <window_info anchor="bottom" id="Inspection Results" order="10" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.49893618" visible="true" weight="0.3264865" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.49841937" visible="true" weight="0.3329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -287,13 +369,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/old_scripts/network_functions.py" />
     <entry file="file://$PROJECT_DIR$/old_scripts/estimation_dn.py" />
-    <entry file="file://$PROJECT_DIR$/scripts/estimation_sdn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="23" column="79" selection-start-line="23" selection-end-line="23" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/estimation_sdn.py" />
     <entry file="file://$PROJECT_DIR$/pycodes/nfnn_parallel_batch1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="539">
@@ -301,21 +377,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/neural_functions.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/neural_functions.py" />
     <entry file="file://$PROJECT_DIR$/old_scripts/estimation_dn_tf_estimator.py" />
     <entry file="file://$PROJECT_DIR$/old_scripts/nn_functions_tf_estimator.py" />
-    <entry file="file://$PROJECT_DIR$/scripts/useful_functions.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="15" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/helper_functions.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/useful_functions.py" />
+    <entry file="file://$PROJECT_DIR$/scripts/helper_functions.py" />
     <entry file="file://$PROJECT_DIR$/old_scripts/(old)estimation_dn_pytorch.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_bundle/pydev_import_hook.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -324,36 +390,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorflow/_api/v1/keras/__init__.py">
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.6/site-packages/tensorflow/_api/v1/keras/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/scripts/estimation_aids.py" />
+    <entry file="file://$PROJECT_DIR$/scripts/network_functions.py" />
+    <entry file="file://$PROJECT_DIR$/scripts/estimation_dn.py" />
+    <entry file="file://$PROJECT_DIR$/scripts/analyze_dn_cross_validation.py" />
+    <entry file="file://$PROJECT_DIR$/output/analysis/preferred_nodes.csv">
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor" />
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" rowLines="3">
+          <column index="0" width="100" />
+          <column index="1" width="100" />
+          <column index="2" width="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pycodes/nfnn_parallel_demographics_batch1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pycodes/nfnn_functions.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/estimation_aids.py">
+    <entry file="file://$PROJECT_DIR$/scripts/estimation/network_functions.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="36" />
-          <folding>
-            <element signature="e#115#151#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="495">
+          <caret line="51" selection-start-line="51" selection-end-line="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/network_functions.py">
+    <entry file="file://$PROJECT_DIR$/scripts/estimation/estimation_dn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="34" selection-end-line="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/result/analyse_dn_cv.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="26" column="26" selection-end-line="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/result/copy_preferred_models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="43" column="25" selection-start-line="43" selection-start-column="25" selection-end-line="43" selection-end-column="25" />
+          <caret line="21" selection-end-line="21" />
           <folding>
-            <element signature="e#47#75#0" expanded="true" />
-            <element signature="e#262#2021#1" />
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/estimation_dn.py">
+    <entry file="file://$PROJECT_DIR$/scripts/result/dn_cross_validation_costs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="96" column="88" selection-start-line="96" selection-start-column="88" selection-end-line="96" selection-end-column="88" />
+        <state relative-caret-position="690">
+          <caret line="47" column="43" selection-end-line="47" selection-end-column="43" />
           <folding>
-            <element signature="e#108#118#0" expanded="true" />
+            <element signature="e#126#159#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/result/result_analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
