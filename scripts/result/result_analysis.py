@@ -90,18 +90,18 @@ def quaids_obtain_cost(sample_key):
     return ((quaids.budget_share - quaids.predict())**2).mean()
 
 def dn_obtain_cost(sample_key):
-	idx_test = idx_bootstrap[sample_key]['test_sample']  # Test sample.
-	x_test, y_test = nf.prepare_data(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_test)  # x and y.
-	model_path = dn_model_path + "sample_" + str(sample_key) + ".h5"
-	K.backend.clear_session()  # Clear session before loading the model.
-	model = K.models.load_model(model_path)  # Load model.
-	test_cost = model.evaluate(x=x_test, y=y_test, verbose=0)
-	return test_cost
+    idx_test = idx_bootstrap[sample_key]['test_sample']  # Test sample.
+    x_test, y_test = nf.prepare_data(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_test)  # x and y.
+    model_path = dn_model_path + "sample_" + str(sample_key) + ".h5"
+    K.backend.clear_session()  # Clear session before loading the model.
+    model = K.models.load_model(model_path)  # Load model.
+    test_cost = model.evaluate(x=x_test, y=y_test, verbose=0)
+    return test_cost
 
 for sample_key in range(n_bootstrap):
     mse_all.loc[sample_key, 'AIDS'] = aids_obtain_cost(sample_key)
     mse_all.loc[sample_key, 'QUAIDS'] = quaids_obtain_cost(sample_key)
     mse_all.loc[sample_key, 'DN'] = dn_obtain_cost(sample_key)
 
-mse_all.plot.kde()
-plt.show(block=True)
+mse_all = mse_all.astype(float)  # Turn columns to floats for boxplot
+boxplot = mse_all.boxplot()

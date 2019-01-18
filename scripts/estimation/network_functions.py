@@ -6,7 +6,8 @@ import numpy as np
 import warnings
 
 
-def build_model(number_node, number_good, optimizer, loss_fn, number_demographic=0, activation_fn='relu', metrics=None):
+def build_model(number_node, number_good, optimizer, loss_fn, number_demographic=0, activation_fn='relu',
+                metrics=None, initializer=keras.initializers.truncated_normal(stddev=0.1)):
     """
     :param number_node: Integer or list of integers. Number of nodes in each hidden layer starting from the first hidden
     layer. If an integer is provided, the neural network has a single hidden layer. If a list of integers is provided,
@@ -22,6 +23,7 @@ def build_model(number_node, number_good, optimizer, loss_fn, number_demographic
     for hidden layer activation.
     :param metrics: Optional metric to evaluate during optimization. Default: None. This could be a function or a list
     of keras metric name.
+    :param initializer: Optional keras initializer.
     :return: model.
     model: Compiled neural network model with provided number of layers and nodes, hidden layer activation, and
     softmax output layer with #number_good# nodes. "model" also stores its optimizer and loss function for optimization.
@@ -36,7 +38,7 @@ def build_model(number_node, number_good, optimizer, loss_fn, number_demographic
         number_node = [number_node]  # Turn input to list if not already a list.
 
     number_hidden_layer = number_node.__len__()
-    initializer = keras.initializers.truncated_normal(stddev=0.1)
+    #initializer = keras.initializers.truncated_normal(stddev=0.1)
     number_of_inputs = number_good + number_demographic + 1
     inputs = keras.Input(shape=[number_of_inputs])
     x = keras.layers.Dense(number_node[0], activation=activation_fn, kernel_initializer=initializer)(inputs)
@@ -137,3 +139,11 @@ def generate_hidden_search_set(midpoint, distance=5):
                       "changed to 1.")
     return np.arange(1 if min_limit_exceed else midpoint-distance, midpoint+distance+1)
 
+
+#def network_elasticity(inputs):
+
+
+
+
+#def theoretical_cost():
+    #TODO: Function to calculate deviation from theoretical restrictions.

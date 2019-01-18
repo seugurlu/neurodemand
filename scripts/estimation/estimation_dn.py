@@ -37,59 +37,61 @@ idx_bootstrap_data_path = "./output/sample_adjustments/idx_bootstrap.npy"  # Pat
 activation_function = 'relu'  # Hidden layer transformation function
 loss_fn = 'mean_squared_error'  # Loss function.
 learning_rate = 1e-3  # Learning rate.
-epsilon = 1e-4
-mini_batch_training_batch_size = 128
-mini_batch_training_epoch_limit = 50
-mini_batch_tol = 1e-8
-n_hidden_node_search_distance = 5
+epsilon = 1e-8  # Adam epsilon
+mini_batch_training_batch_size = 256  # Batch size
+mini_batch_training_epoch_limit = 50  # Max Number of iterations
+mini_batch_tol = 1e-8  # Tolerance to stop iterations
+n_hidden_node_search_distance = 5  # Half-range for number of node search
 
 # Import Data
-full_data = pd.read_csv(data_path, index_col=data_index_column_name_identifier)
-idx_bootstrap = np.load(idx_bootstrap_data_path).item()
+full_data = pd.read_csv(data_path, index_col=data_index_column_name_identifier)  # Load data
+idx_bootstrap = np.load(idx_bootstrap_data_path).item()  # Load indices for each bootstrap sample
 
 
 # Extract some data-related hyper-parameters
-n_goods = full_data.columns.str.startswith(b_ident).sum()
+n_goods = full_data.columns.str.startswith(b_ident).sum()  # Retrieve number of goods
 try:
-    n_demographics = full_data.columns.str.startswith(d_ident).sum()
+    n_demographics = full_data.columns.str.startswith(d_ident).sum()  # Retrieve number of demographics
 except AttributeError:  # If d_ident is None.
     n_demographics = 0
 
 # Set data reliant neural network hyper-parameters
 n_hidden_node_search_midpoint = int(np.sqrt(
         (n_goods + n_demographics + 1) * n_goods
-    ))
-n_hidden_node_search_set = nf.generate_hidden_search_set(n_hidden_node_search_midpoint, n_hidden_node_search_distance)
+    ))  # Set midpoint for node search
+n_hidden_node_search_set = nf.generate_hidden_search_set(n_hidden_node_search_midpoint,
+                                                         n_hidden_node_search_distance)  # Set hidden node search set
 
 # Cross-validation
 
 
-def cross_validation(sample_key):
-    from tensorflow import keras
-    keras.backend.set_session(tf.Session(config=config))
-    optimizer = keras.optimizers.Adam(lr=learning_rate, epsilon=epsilon)
+def cross_validation(sample_key):  # Define optimization algorithm with cross-validation
+    from tensorflow import keras  # Import keras for each thread
+    keras.backend.set_session(tf.Session(config=config))  # Set backend with config options
+    optimizer = keras.optimizers.Adam(lr=learning_rate, epsilon=epsilon)  # Set optimizer
     # Pick training and cross-validation data for this particular bootstrap
-    #print("Cross Validation starts with bootstrap sample {}".format(sample_key))
-    idx_training = idx_bootstrap[sample_key]['training_sample']
-    idx_cv = idx_bootstrap[sample_key]['cv_sample']
-    x_train, y_train = nf.prepare_data(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_training)
-    x_cv, y_cv = nf.prepare_data(full_data, p_ident, e_ident, b_ident, d_ident=d_ident, idx=idx_cv)
+    idx_training = idx_bootstrap[sample_key]['training_sample']  # Retrieve training set
+    idx_cv = idx_bootstrap[sample_key]['cv_sample']  # Retrieve cross-validation set
+    x_train, y_train = nf.prepare_data(full_data, p_ident, e_ident, b_ident,
+                                       d_ident=d_ident, idx=idx_training)  # Retrieve input and output for training
+    x_cv, y_cv = nf.prepare_data(full_data, p_ident, e_ident, b_ident,
+                                 d_ident=d_ident, idx=idx_cv)  # Retrieve input and output for cross-validation
 
     # Estimation
-    def estimation(n_node):
-        file_path = "./output/temp/dn/cross_validation/sample_{}_node_{}.h5".format(sample_key, n_node)
-        dn_model = nf.build_model(n_node, n_goods, optimizer, loss_fn, activation_fn=activation_function)
-        callbacks = [keras.callbacks.EarlyStopping('loss', min_delta=mini_batch_tol)]
-        history = dn_model.fit(x=x_train, y=y_train, batch_size=mini_batch_training_batch_size,
+    def estimation(n_node):  # Define optimization routine
+        file_path = "./output/temp/dn/cross_validation/sample_{}_node_{}.h5".format(sample_key, n_node)  # Save path
+        dn_model = nf.build_model(n_node, n_goods, optimizer, loss_fn, activation_fn=activation_function)  # Set model
+        callbacks = [keras.callbacks.EarlyStopping('loss', min_delta=mini_batch_tol)]  # Define callbacks
+        history = dn_model.fit(x=x_train, y=y_train, batch_size=mini_batch_training_batch_size,  #Optimization
                                epochs=mini_batch_training_epoch_limit, callbacks=callbacks, verbose=0,
                                validation_data=(x_cv, y_cv))
-        dn_model.save(file_path)
-        return history.history
-    cv_results = {'Number of Nodes': [], 'Loss History': []}
-    for node in n_hidden_node_search_set:
+        dn_model.save(file_path)  # Save optimization output
+        return history.history  # Return output
+    cv_results = {'Number of Nodes': [], 'Loss History': []}  # Pre-allocate result dictionary
+    for node in n_hidden_node_search_set:  # Loop over potential number of nodes
         cv_results['Number of Nodes'].append(node)
         cv_results['Loss History'].append(estimation(node))
-    keras.backend.clear_session()
+    keras.backend.clear_session()  # Reset session
     return cv_results
 
 
