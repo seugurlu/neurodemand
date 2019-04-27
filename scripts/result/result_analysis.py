@@ -105,3 +105,4 @@ for sample_key in range(n_bootstrap):
 
 mse_all = mse_all.astype(float)  # Turn columns to floats for boxplot
 boxplot = mse_all.boxplot()
+kde = mse_all.plot.kde()
