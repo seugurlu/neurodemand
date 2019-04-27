@@ -9,9 +9,10 @@ import network_functions as nf
 import pandas as pd
 import numpy as np
 import tensorflow as tf
+from tensorflow import keras
 #tf.enable_eager_execution()
-import os
-os.environ["TF_CPP_MIN_LOG_LEVEL"]="2"
+#import os
+#os.environ["TF_CPP_MIN_LOG_LEVEL"]="2"
 
 # Set system related hyper-parameters
 n_cores_to_tf = 6
@@ -45,15 +46,15 @@ n_hidden_node_search_distance = 5
 
 # Import Data
 full_data = pd.read_csv(data_path, index_col=data_index_column_name_identifier)
-idx_bootstrap = np.load(idx_bootstrap_data_path).item()
+idx_bootstrap = np.load(idx_bootstrap_data_path, allow_pickle=True).item()
 
 
 # Extract some data-related hyper-parameters
 n_goods = full_data.columns.str.startswith(b_ident).sum()
-try:
-    n_demographics = full_data.columns.str.startswith(d_ident).sum()
-except AttributeError:  # If d_ident is None.
-    n_demographics = 0
+if d_ident is None:
+	n_demographics = 0
+else:
+	n_demographics = full_data.columns.str.startswith(d_ident).sum()
 
 # Set data reliant neural network hyper-parameters
 n_hidden_node_search_midpoint = int(np.sqrt(
@@ -66,7 +67,6 @@ sample_key = 0  # Temporary input for coding
 n_node = 5  # Temporary input for coding
 
 # def cross_validation(sample_key):
-from tensorflow import keras
 keras.backend.set_session(tf.Session(config=config))
 initializer = keras.initializers.truncated_normal(stddev=0.1)
 optimizer = keras.optimizers.Adam(lr=learning_rate, epsilon=epsilon)

@@ -115,7 +115,7 @@ def generate_hidden_search_set(midpoint, distance=5):
     Generate an array of all integers from the closed set [midpoint-distance, midpoint+distance].
     :param midpoint: Integer. Midpoint to form the range.
     :param distance: Optional Integer. Default:5. Distance is used to define borders of the closed set.
-    If midpoint-distance is less than 1, the infimum of the set is changed to 1. A warning message is raised to inform
+    If midpoint-distance<1, the lower bound of the set is changed to 1. A warning message is raised to inform
     the user of this change.
     :return: An array of all integers between midpoint-distance and midpoint+distance, borders included.
 
@@ -131,9 +131,9 @@ def generate_hidden_search_set(midpoint, distance=5):
     generate_hidden_search_set(10, 3)
     array([ 7,  8,  9, 10, 11, 12, 13])
     """
-    assert isinstance(midpoint, int), "Midpoint must be an integer."
-    assert isinstance(distance, int), "Distance must be an integer."
-    min_limit_exceed = 1 if midpoint-distance < 1 else 0
+    assert isinstance(midpoint, (int, np.integer)), "Midpoint must be an integer."
+    assert isinstance(distance, (int, np.integer)), "Distance must be an integer."
+    min_limit_exceed = True if midpoint-distance < 1 else False
     if min_limit_exceed:
         warnings.warn("Number of nodes at a hidden layer cannot be negative. Minimum element of the search set is " \
                       "changed to 1.")
@@ -141,9 +141,7 @@ def generate_hidden_search_set(midpoint, distance=5):
 
 
 #def network_elasticity(inputs):
-
-
-
+    #TODO: Calculation of elasticities
 
 #def theoretical_cost():
     #TODO: Function to calculate deviation from theoretical restrictions.

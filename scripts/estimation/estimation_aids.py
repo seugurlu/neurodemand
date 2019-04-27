@@ -34,7 +34,7 @@ idx_bootstrap = np.load(idx_bootstrap_path, allow_pickle=True).item()
 
 def aids_estimations(sample_key):
     idx_training = idx_bootstrap[sample_key]['training_sample']
-    coefficients = fa.aids_estimator(sample_key, idx_training, full_data, with_demographic,
+    coefficients = fa.aids_estimator(idx_training, full_data, with_demographic,
                                      price_column_name_identifier, expenditure_column_name_identifier,
                                      budget_share_column_name_identifier, demographics_column_name_identifier)
     return coefficients

@@ -47,18 +47,17 @@ n_hidden_node_search_distance = 5  # Half-range for number of node search
 full_data = pd.read_csv(data_path, index_col=data_index_column_name_identifier)  # Load data
 idx_bootstrap = np.load(idx_bootstrap_data_path).item()  # Load indices for each bootstrap sample
 
-
 # Extract some data-related hyper-parameters
 n_goods = full_data.columns.str.startswith(b_ident).sum()  # Retrieve number of goods
-try:
-    n_demographics = full_data.columns.str.startswith(d_ident).sum()  # Retrieve number of demographics
-except AttributeError:  # If d_ident is None.
-    n_demographics = 0
+if d_ident is None:
+	n_demographics = 0
+else:
+	n_demographics = full_data.columns.str.startswith(d_ident).sum()  # Retrieve number of demographics
 
 # Set data reliant neural network hyper-parameters
 n_hidden_node_search_midpoint = int(np.sqrt(
         (n_goods + n_demographics + 1) * n_goods
-    ))  # Set midpoint for node search
+    ))  # Set midpoint for node search as geometric mean of number of nodes in input and output layers
 n_hidden_node_search_set = nf.generate_hidden_search_set(n_hidden_node_search_midpoint,
                                                          n_hidden_node_search_distance)  # Set hidden node search set
 

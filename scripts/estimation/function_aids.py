@@ -3,14 +3,13 @@ import demandtools as dt
 import pandas as pd
 import numpy as np
 
-def aids_estimator(sample_key, idx, full_data, with_demographic=True,
-					 price_column_name_identifier='p', expenditure_column_name_identifier='total_expenditure',
-					 budget_share_column_name_identifier='w', demographics_column_name_identifier='d'):
+def aids_estimator(idx, full_data, with_demographic=True,
+				   price_column_name_identifier='p', expenditure_column_name_identifier='total_expenditure',
+				   budget_share_column_name_identifier='w', demographics_column_name_identifier='d'):
 
 	"""Extract training data and perform estimation."""
 
 	"""Input check"""
-	assert isinstance(sample_key, (int, np.integer)), "Sample key must be an integer."
 	assert isinstance(idx, (list, np.ndarray, pd.Series)), "idx must be a list, numpy array, or pandas series."
 	assert(all(map(lambda x: isinstance(x, (int, np.integer)), idx))), "idx elements must be a list of integers."
 	assert isinstance(full_data, pd.DataFrame), "full_data must be a pandas dataframe."
