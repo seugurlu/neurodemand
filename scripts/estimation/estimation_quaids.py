@@ -2,11 +2,14 @@
     Returns a dictionary of predicted coefficients for quaids models. Keys are sample keys.
 """
 # Import Modules
+import sys
+sys.path.append(".\\scripts\\estimation\\")  # Add estimation scripts to the path for easy importing.
+
 from joblib import Parallel, delayed
 import demandtools as dt
 import pandas as pd
 import numpy as np
-
+import function_quaids as fq
 
 # Set Hyper-parameters and Other useful things.
 
@@ -25,31 +28,16 @@ idx_bootstrap_path = "./output/sample_adjustments/idx_bootstrap.npy"
 # Import Data
 
 full_data = pd.read_csv(data_path, index_col=data_index_column_name_identifier)
-idx_bootstrap = np.load(idx_bootstrap_path).item()
-
+idx_bootstrap = np.load(idx_bootstrap_path, allow_pickle=True).item()
 
 # Proceed with estimation
 
 
 def quaids_estimations(sample_key):
-    train_set_index = idx_bootstrap[sample_key]['training_sample']
-    train = full_data.loc[train_set_index, :]
-    price = train.loc[:, train.columns.str.startswith(price_column_name_identifier)]
-    expenditure = train.loc[:, train.columns.str.startswith(expenditure_column_name_identifier)]
-    budget_share = train.loc[:, train.columns.str.startswith(budget_share_column_name_identifier)]
-    if with_demographic is True:
-        demographics = train.loc[:, train.columns.str.startswith(demographics_column_name_identifier)]
-        quaids = dt.Quaids(price, expenditure, budget_share, demographics)
-    else:
-        quaids = dt.Quaids(price, expenditure, budget_share)
-    quaids.optimize()
-    if with_demographic is True:
-        coefficients = dict([('alpha', quaids.alpha), ('beta', quaids.beta),
-                            ('gamma', quaids.gamma), ('alpha_demographic', quaids.alpha_demographic),
-                            ('lambda', quaids.lambdas)])
-    else:
-        coefficients = dict([('alpha', quaids.alpha), ('beta', quaids.beta),
-                            ('gamma', quaids.gamma), ('lambda', quaids.lambdas)])  # Uncomment for demographics
+    idx_training = idx_bootstrap[sample_key]['training_sample']
+    coefficients = fq.quaids_estimator(sample_key, idx_training, full_data, with_demographic,
+                                       price_column_name_identifier, expenditure_column_name_identifier,
+                                       budget_share_column_name_identifier, demographics_column_name_identifier)
     return coefficients
 
 
