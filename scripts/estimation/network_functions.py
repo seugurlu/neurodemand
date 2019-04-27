@@ -1,4 +1,4 @@
-"""Functions to work with demand networks."""
+"""Functions to work with neural network demand systems."""
 
 from tensorflow import keras
 import tensorflow as tf
